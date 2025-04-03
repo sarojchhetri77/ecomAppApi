@@ -6,7 +6,7 @@ require_once "../config/response.php";
 if ($_SERVER["REQUEST_METHOD"] !== "GET") {
     sendResponse(false, "Invalid request method");
 }
-// $baseUrl = "http://localhost/newphpapi/uploads/";
+$baseUrl = "https://ecomapi.neptechpal.com.np/uploads/";
 
 $sql = "SELECT products.id, products.name, products.price, products.description,products.image, categories.id AS categoryId, categories.category AS category_name 
         FROM products 
@@ -16,7 +16,7 @@ $result = $conn->query($sql);
 if ($result->num_rows > 0) {
     $products = [];
     while ($row = $result->fetch_assoc()) {
-        // $row['image'] = !empty($row['image']) ? $baseUrl . $row['image'] : null;
+        $row['image'] = !empty($row['image']) ? $baseUrl . $row['image'] : null;
         $products[] = $row;
     }
     sendResponse(true,"Products retrieved successfully", ["products" => $products]);

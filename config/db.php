@@ -1,8 +1,8 @@
 <?php
 $servername = "localhost";
-$username = "root";
+$username = "ecom_api";
 $password = "password";  
-$dbname = "store";
+$dbname = "ecomApi";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 
